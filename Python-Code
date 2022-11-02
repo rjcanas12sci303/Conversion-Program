@@ -1,0 +1,103 @@
+#This is a program to convert number from decimal number system to binary, octal and hexadecimal number system.
+num=float(input("Enter the number; "))
+print("-"*50)
+print("Input base number as follows:- \n2 for conversion in binary number system. \n8 for conversion in octal number system. \n16 for conversion in hexadecimal number system.")
+print("-"*50)
+base=int(input("Enter base number; "))
+int_of_num=int(num)
+frac_of_num=num-int_of_num
+radix_point=["."]
+empty_list1=[]
+empty_list1.append(int_of_num)
+empty_list2=[]
+empty_list6=[]
+frac_part=[]
+#Conversion to binary, octal and hexadecimal number system.
+while int_of_num>0:
+    int_element=int_of_num//base
+    empty_list1.append(int_element)
+    int_of_num=int_element
+for x in empty_list1:
+    int_remainder=x%base
+    empty_list2.append(int_remainder)
+    if int_remainder==10:
+        empty_list2.remove(10)
+        empty_list2.append("A")
+    if int_remainder==11:
+        empty_list2.remove(11)
+        empty_list2.append("B")
+    if int_remainder==12:
+        empty_list2.remove(12)
+        empty_list2.append("C")
+    if int_remainder==13:
+        empty_list2.remove(13)
+        empty_list2.append("D")
+    if int_remainder==14:
+        empty_list2.remove(14)
+        empty_list2.append("E")
+    if int_remainder==15:
+        empty_list2.remove(15)
+        empty_list2.append("F")
+    empty_list3=empty_list2[::-1]#Reversing the list
+    int_part=empty_list3[1:]
+for y in range(1,26,1):
+    answer=frac_of_num*base
+    int_answer=int(answer)
+    frac_answer=answer-int_answer
+    round_frac_answer=round(frac_answer,4)
+    if round_frac_answer in empty_list6:
+        break
+    frac_part.append(int_answer)
+    empty_list6.append(round_frac_answer)
+    if int_answer==10:
+        frac_part.remove(10)
+        frac_part.append("A")
+    if int_answer==11:
+        frac_part.remove(11)
+        frac_part.append("B")
+    if int_answer==12:
+        frac_part.remove(12)
+        frac_part.append("C")
+    if int_answer==13:
+        frac_part.remove(13)
+        frac_part.append("D")
+    if int_answer==14:
+        frac_part.remove(14)
+        frac_part.append("E")
+    if int_answer==15:
+        frac_part.remove(15)
+        frac_part.append("F")
+    if round_frac_answer==0:
+        break
+    else:
+        frac_of_num=round_frac_answer
+result=int_part+radix_point+frac_part
+if base==2:
+    base_name="binary"
+    print("-"*50)
+    print("The",base_name,"eqiuvalent of",num,"is; ")
+    for z in result:
+        print(z,end='')
+    print(" ")
+    print("-"*50)
+elif base==8:
+    base_name="octal"
+    print("-"*50)
+    print("The",base_name,"eqiuvalent of",num,"is; ")
+    for z in result:
+        print(z,end='')
+    print(" ")
+    print("-"*50)
+elif base==16:
+    base_name="hexadecimal"
+    print("-"*50)
+    print("The",base_name,"eqiuvalent of",num,"is; ")
+    for z in result:
+        print(z,end='')
+    print(" ")
+    print("-"*50)
+else:
+    print("-"*50)
+    print("Oops wrong choice.")
+    print("-"*50)
+print("The End.")
